@@ -214,22 +214,41 @@ code.language-yaml {
     <body for="html-export">
       <div class="mume markdown-preview   ">
       <div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc" data-code=""><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div><div class="output-div"></div></div>
+<ul>
+<li><a href="#%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8">如何防止交叉引用</a>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%B6%E5%BC%95%E7%94%A8%E6%A8%A1%E5%9D%97">什么是零引用模块</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E5%85%B6%E5%AE%83%E5%BA%93">如何调用其它库</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%A2%AB%E5%85%B6%E5%AE%83%E5%BA%93%E8%B0%83%E7%94%A8">如何被其它库调用</a>
+<ul>
+<li><a href="#%E4%B8%BB%E5%8A%A8%E5%BC%8F%E8%B0%83%E7%94%A8">主动式调用</a></li>
+<li><a href="#%E8%A2%AB%E5%8A%A8%E5%BC%8F%E8%B0%83%E7%94%A8">被动式调用</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9C%80%E5%90%8E">最后</a></li>
+</ul>
+</li>
+</ul>
 <h1 class="mume-header" id="%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8">如何防止交叉引用</h1>
 
 <h2 class="mume-header" id="%E5%89%8D%E8%A8%80">前言</h2>
 
-<p>在大部分规划的不是非常合适的项目经常能看到这样一种现象</p>
+<p>在大部分项目中，我们经常能看到这样一种现象</p>
 <ul>
-<li>考虑到业务的独立性，创建一个新的 <strong>库/包</strong> 来实现某个业务</li>
-<li>因为该业务需要引用到一些其它业务，所以加入到 <strong>引入/依赖项</strong> 中去（比如扩展了游戏业务模块，他依赖于用户模块，从用户模块中加载用户的部分信息）</li>
+<li>考虑到某个新业务的独立性，创建一个新的 <strong>库/包</strong> 来实现某个业务</li>
+<li>该业务需要引用到一些其它已有业务，因此加入到 <strong>引入/依赖项</strong> 中去（比如扩展了游戏业务模块，他依赖于用户模块，从用户模块中加载用户的部分信息）</li>
 </ul>
-<p>其实这种开发模式本身没有什么问题，无论我参加哪个项目，几乎清一色使用这种模式进行开发的</p>
-<p><strong>但是</strong> ，在某个项目中，同事抛出了一个问题</p>
+<p>这种行为大家都在做，而且也没有什么问题，说实话，我也这用这种方式进行各种项目的开发。</p>
+<p><strong>直到有一天，某个朋友向我发出了一个求助</strong></p>
 <blockquote>
-<p>我现在有两个动态库，A已经引用了B，现在因为业务原因，B还需要引用A，怎么办？</p>
+<p>我现在有两个动态库A和B，在过去的需求中，A已经引用了B，现在因为新需求的原因，B还需要引用A，可是IDE不允许这样操作，怎么办？</p>
 </blockquote>
-<p>很多人一定会说，这肯定是<strong>库</strong>的分隔不合理造成的。</p>
-<p>于是，这里就有一了个矛盾，在现在这种迭代式的开发模式中，业务库划分的初期，已知信息其实并不多，那么根据这些不健全的信息进行业务库的划分，后期出错的情况一定是存在的。</p>
+<p><strong>当然不允许这样操作了</strong>，这是交叉引用，在特殊的情况下会造成无法编译的尴尬困境，所以在很多IDE中都禁止了这种引用方式。</p>
+<blockquote>
+<p>这肯定是<strong>库</strong>的分隔不合理造成的。</p>
+</blockquote>
+<p>于是，这里就有一了个矛盾，在眼下流行的这种迭代式的开发模式中，业务库划分的初期，已知信息其实并不多，那么根据这些不健全的信息进行业务库的划分，后期出错的情况一定是存在的。</p>
 <p>为了解决这个问题，应该存在两个方向的方案</p>
 <ul>
 <li>当出现交叉引用时，如何解决（未端，矛盾已暴露）</li>
@@ -329,7 +348,8 @@ Module<span class="token punctuation">.</span><span class="token function">GetCu
 
 <p>实事上，这种交叉引用的情况还是比较少出现的。<br>
 但是解耦的思想应当在贯穿在每一步重要的开发阶段，比如抽象库、创建新业务库、对旧业务的引用、对旧业务的扩展等等。</p>
-<h2>本文只是以防止交叉引用为例，希望大家能够以此为借，在思想上有更高的升华。</h2>
+<p>本文只是以防止交叉引用为例，希望大家能够以此为借，在思想上有更高的升华。</p>
+<hr>
 <p><strong>文章为作者原创，未尽同意禁止转载，谢谢合作</strong></p>
 
       </div>
