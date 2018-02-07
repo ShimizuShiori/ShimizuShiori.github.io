@@ -1,7 +1,3 @@
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
-
-
 # 如何防止交叉引用
 
 ## 前言
