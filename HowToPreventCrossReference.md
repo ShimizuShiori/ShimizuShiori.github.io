@@ -136,3 +136,6 @@ Module.GetCurrentSetting().OnEmployeeCreated(this, new EmployeeCreatedArgs(userM
 但是解耦的思想应当在贯穿在每一步重要的开发阶段，比如抽象库、创建新业务库、对旧业务的引用、对旧业务的扩展等等。
 
 本文只是以防止交叉引用为例，希望大家能够以此为借，在思想上有更高的升华。
+---
+
+**文章为作者原创，未尽同意禁止转载，谢谢合作**
