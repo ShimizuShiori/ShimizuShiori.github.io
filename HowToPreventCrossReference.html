@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>HowToPreventCrossReference</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///C:\Users\z003uumc\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.3.2\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc" data-code=""><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div><div class="output-div"></div></div>
+<h1 class="mume-header" id="%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8">如何防止交叉引用</h1>
+
+<h2 class="mume-header" id="%E5%89%8D%E8%A8%80">前言</h2>
+
+<p>在大部分规划的不是非常合适的项目经常能看到这样一种现象</p>
+<ul>
+<li>考虑到业务的独立性，创建一个新的 <strong>库/包</strong> 来实现某个业务</li>
+<li>因为该业务需要引用到一些其它业务，所以加入到 <strong>引入/依赖项</strong> 中去（比如扩展了游戏业务模块，他依赖于用户模块，从用户模块中加载用户的部分信息）</li>
+</ul>
+<p>其实这种开发模式本身没有什么问题，无论我参加哪个项目，几乎清一色使用这种模式进行开发的</p>
+<p><strong>但是</strong> ，在某个项目中，同事抛出了一个问题</p>
+<blockquote>
+<p>我现在有两个动态库，A已经引用了B，现在因为业务原因，B还需要引用A，怎么办？</p>
+</blockquote>
+<p>很多人一定会说，这肯定是<strong>库</strong>的分隔不合理造成的。</p>
+<p>于是，这里就有一了个矛盾，在现在这种迭代式的开发模式中，业务库划分的初期，已知信息其实并不多，那么根据这些不健全的信息进行业务库的划分，后期出错的情况一定是存在的。</p>
+<p>为了解决这个问题，应该存在两个方向的方案</p>
+<ul>
+<li>当出现交叉引用时，如何解决（未端，矛盾已暴露）</li>
+<li>如何防止出现交叉引用（始端，矛盾未出现）</li>
+</ul>
+<p>实事上，当交叉引用的需求已经发生时，我觉得已经很难通过简单的手法进行解决了。因此本人放弃了对未端的分析和解决。</p>
+<p>于是，我构思了一种称作为零引用模块的概念，以解决交叉引用的发生</p>
+<blockquote>
+<p>ps. 本人长年从事C#方面的工作，因此该方案也是基于.Net领域起草的，对于在其它编程领域是否有效，不敢断言。</p>
+</blockquote>
+<blockquote>
+<p>ps2. 本文 <strong>仅</strong> 针对没有使用 <strong>消息队列 / 事件总线</strong> 的项目书写的优化建议</p>
+</blockquote>
+<h2 class="mume-header" id="%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%B6%E5%BC%95%E7%94%A8%E6%A8%A1%E5%9D%97">什么是零引用模块</h2>
+
+<p>零引用模块就是指，除去.net平台固有动态<strong>库/框架</strong>以外，没有引用其它任何第三方功能库、业务库的模块（第三方框架除外）。</p>
+<p>通过剔除对其它任何业务的依赖，才能真正达预防交叉引用（谁也不引用我，我也不引用谁）。</p>
+<p>使用零引用模块，我们就一定要解决下面两个问题</p>
+<ol>
+<li>如何调用其它库（引用）</li>
+<li>如何被其它库调用（被引用）</li>
+</ol>
+<h2 class="mume-header" id="%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E5%85%B6%E5%AE%83%E5%BA%93">如何调用其它库</h2>
+
+<blockquote>
+<p>通过接口定义需求边界</p>
+</blockquote>
+<p>如何理解呢？打个比方吧</p>
+<ol>
+<li>小姑娘想要找个男朋友，可是这男朋友在人海之中，上哪儿找去呢？</li>
+<li>于是小姑娘自己做了一张表，表里面有各种各校的内容，比如身高、年龄、爱好、体重等等</li>
+<li>表格制作完成了，小姑娘把表交给了某一个交友平台</li>
+<li>交友平台在平台上匹配各种男孩的信息，当发现一个完全符合要求的，就提交给这个女孩</li>
+</ol>
+<p>咱们把上面的过程映射到Code世界来，大致应该是这样</p>
+<ol>
+<li>游戏模块想要通过Session中的ID找到用户的头像、性别和年龄，可是Project中有那么多的Libs，上哪儿找去呢？</li>
+<li>于是程序员做了一个接口，定义了几个方法，比如GetGenderByUserId(userId)，GetBirthdayByUserId(userId)等等</li>
+<li>接口定义好了以后，把接口告诉程序的入口端</li>
+<li>程序入口会搜索类型，一旦发现实现了这个接口的类型，就移交给游戏模块</li>
+<li>和上面相比要多做的一件事情，就是为这个接口做一个实现类（也就是在交友平台中创建一个“男朋友”，因为主模块中具备所有模块，因此在这里使用用户模块实现一个游戏模块的接口是合理的）</li>
+</ol>
+<p>我们可以对上面的内容进行进一步的规范和优化，这个规范和优化就是仁者见仁的事了，每个人设计出来的肯定是不同的。</p>
+<p>在这里，我也提供的一个简要的思路</p>
+<ol>
+<li>对依赖的业务创建接口（一个或复数个都可以）</li>
+<li>创建静态类Settings，用于记录所有创建接口实现类的
+<ul>
+<li>Setup方法，供外部（主模块）定义接口实现类的创建方式</li>
+<li>GetCurrentSetting方法，供内部使用，获取外部定义的各接口实现类的创建方式</li>
+</ul>
+</li>
+<li>所有需要使用到 <strong>1</strong> 的接口实例的地方，均通过 <strong>2</strong> 中的GetCurrentSetting方法获取</li>
+<li>在主模块实现 <strong>1</strong> 中的所有接口</li>
+<li>在主模块入口中，将 <strong>4</strong> 开发的实现类通过Setup方法通知模块</li>
+</ol>
+<h2 class="mume-header" id="%E5%A6%82%E4%BD%95%E8%A2%AB%E5%85%B6%E5%AE%83%E5%BA%93%E8%B0%83%E7%94%A8">如何被其它库调用</h2>
+
+<p>其它库在调用目标库，基本上分为以下两种：</p>
+<ul>
+<li>主动式调用：根据某某ID获取某某的哪些属性</li>
+<li>被动式调用：当某某数据被创建时，需要做额外的事情</li>
+</ul>
+<p>咱们一个一个说</p>
+<h3 class="mume-header" id="%E4%B8%BB%E5%8A%A8%E5%BC%8F%E8%B0%83%E7%94%A8">主动式调用</h3>
+
+<p>聪明的同学一定发生了，上面的 <strong>如何调用其它库</strong> 就是一个主动式的调用，因此，对于主动式调用，我们在开发当前模块时，完全不用关心。</p>
+<p>因为这是调用方需要去实现的工作</p>
+<h3 class="mume-header" id="%E8%A2%AB%E5%8A%A8%E5%BC%8F%E8%B0%83%E7%94%A8">被动式调用</h3>
+
+<p>其实，通过对多个项目的观察，这个是比较容易造成交叉引用的领域。</p>
+<p>说一个真实的例子：</p>
+<p>我参与的时候，项目中，已经具备组织架构模块了，现在想开发一个文档管理模块，于是另起了一个库。</p>
+<p>因为文档模块需要部门、人员的信息很正常的，所以文档模块强引用了组织构架模块。</p>
+<p>没过多久，因为一些不便透露的原因，产生了一个新的业务逻辑，就是每创建一个员工，需要初始化一套针对该员工的文档库（基于不便透露的原因，该功能不能以被动的形式实现）</p>
+<p>这时候程序员们发生，组织构架模块不能引用文档管理模块，因为文档管理模块就是依赖于组织构架模块的，这个引用关系闭环了</p>
+<p>为解燃眉之急，程序员们只能将文档管理中的相关代码复制到组织构架模块中，并在Employee的Created后，调用这些代码进行相应业务的实现。</p>
+<p>一旦开始复制代码了，痛苦的路就开始了………………（大家都懂的，就不再多说了）</p>
+<hr>
+<p>为了解决这个问题，我们可以借用之前的静态类Settings</p>
+<p>该类其实是主模块和子模块的沟通类，并且，主模块中可以访问到所有子模块。</p>
+<p>根据这些特性，我们可以把一些Event挂载到静态类Settings上面，并在入口类以Settings初始化时，定义这些事件的处理者</p>
+<p>比如：</p>
+<pre class="language-csharp">
+<span class="token comment" spellcheck="true">///code in entry</span>
+EmployeeModule<span class="token punctuation">.</span>Settings<span class="token punctuation">.</span>Events<span class="token punctuation">.</span>EmployeeCreated <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>sender<span class="token punctuation">,</span> e<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    IDocumentManagerService service <span class="token operator">=</span> <span class="token function">someCreateFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    service<span class="token punctuation">.</span><span class="token function">InitUserDocuments</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>UserId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">///code in Employee</span>
+Serivce<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span>userModel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Module<span class="token punctuation">.</span><span class="token function">GetCurrentSetting</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">OnEmployeeCreated</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">EmployeeCreatedArgs</span><span class="token punctuation">(</span>userModel<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+<p>通过Settings静态类，作为事件的宿主，并在主模块中装配处理器，便可完全避免交叉引用的产生。</p>
+<h2 class="mume-header" id="%E6%9C%80%E5%90%8E">最后</h2>
+
+<p>实事上，这种交叉引用的情况还是比较少出现的。<br>
+但是解耦的思想应当在贯穿在每一步重要的开发阶段，比如抽象库、创建新业务库、对旧业务的引用、对旧业务的扩展等等。</p>
+<p>本文只是以防止交叉引用为例，希望大家能够以此为借，在思想上有更高的升华。</p>
+
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8">如何防止交叉引用</a>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%B6%E5%BC%95%E7%94%A8%E6%A8%A1%E5%9D%97">什么是零引用模块</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E5%85%B6%E5%AE%83%E5%BA%93">如何调用其它库</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%A2%AB%E5%85%B6%E5%AE%83%E5%BA%93%E8%B0%83%E7%94%A8">如何被其它库调用</a>
+<ul>
+<li><a href="#%E4%B8%BB%E5%8A%A8%E5%BC%8F%E8%B0%83%E7%94%A8">主动式调用</a></li>
+<li><a href="#%E8%A2%AB%E5%8A%A8%E5%BC%8F%E8%B0%83%E7%94%A8">被动式调用</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9C%80%E5%90%8E">最后</a></li>
+</ul>
+</li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    </body>
+    
+    
+    
+    
+    
+    <script>
+(function bindTaskListEvent() {
+  var taskListItemCheckboxes = document.body.getElementsByClassName('task-list-item-checkbox')
+  for (var i = 0; i < taskListItemCheckboxes.length; i++) {
+    var checkbox = taskListItemCheckboxes[i]
+    var li = checkbox.parentElement
+    if (li.tagName !== 'LI') li = li.parentElement
+    if (li.tagName === 'LI') {
+      li.classList.add('task-list-item')
+    }
+  }
+}())    
+</script>
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  </html>
