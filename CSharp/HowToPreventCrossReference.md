@@ -137,7 +137,7 @@ Module.GetCurrentSetting().OnEmployeeCreated(this, new EmployeeCreatedArgs(userM
 
 ---
 
-[返回首页](index.html)
+[返回首页](../index.html)
 
 ---
 
