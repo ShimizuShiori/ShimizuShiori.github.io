@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <title>index</title>
+      <title>如何入门EMIT</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -213,20 +213,67 @@ code.language-yaml {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview   ">
-      <h1 class="mume-header" id="%E7%9B%AE%E5%BD%95">目录</h1>
+      <h1 class="mume-header" id="%E5%A6%82%E4%BD%95%E5%85%A5%E9%97%A8emit">如何入门EMIT</h1>
 
-<h2 class="mume-header" id="c%E7%B1%BB%E6%96%87%E7%AB%A0">C#类文章</h2>
+<h2 class="mume-header" id="%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">基本概念</h2>
 
+<h3 class="mume-header" id="%E4%BB%80%E4%B9%88%E6%98%AFil">什么是IL</h3>
+
+<p>对于从事C#工作一段时间的人来说，IL并不陌生。</p>
+<p>C#编译器并不会直接将我们的Code编译成机器级语言，而是编译成IL语言，再由相关解释器执行IL中的字节码到机器级语言。</p>
+<p>所以说，得到IL是我们编译C#的最终目标</p>
+<h3 class="mume-header" id="%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%B0%84">什么是反射</h3>
+
+<p>接触<strong>反射</strong>应该比接触<strong>IL</strong>还早，<strong>反射</strong>允许我们在程序运行时，访问程序集以及其中类型和成员的机制。</p>
+<p>没有<strong>反射</strong>，我们只能在创建一个<strong>指定</strong>的类型，访问一个<strong>指定</strong>的成员等等</p>
+<blockquote>
+<p><strong>指定</strong> : 表示硬编码固定的，<strong>if/switch</strong>均属于该范畴</p>
+</blockquote>
+<p>通过<strong>反射</strong>，我们可以在程序运行时，通过对配置文件的修改，创建<strong>任意</strong>的类型，访问一个<strong>任意</strong>的方法等等</p>
+<p><strong>但是</strong>，反射由于其实现的原理，无论在C#还是Java中，都是一种开销较大的机制，该机制在带来系统无限扩张性的同事，也降低了程序的运行效率。</p>
+<h3 class="mume-header" id="%E4%BB%80%E4%B9%88%E6%98%AFemit">什么是EMIT</h3>
+
+<p><strong>EMIT机制</strong>允许我们在编码时，创建IL中间语言。</p>
+<p>相对于<strong>反射</strong>提供的动态，EMIT直接创建了IL中间语言。我们可以理解为，一旦IL被创建了，剩下来的事就是解释器进行机器级语言的翻译，因此速度远远远远…………大于<strong>反射</strong></p>
+<p>实事上，利用EMIT优化反射性能只是它的一个小小的作用，他还可以用于代理类动态生成（这才是发挥EMIT真正优势的地方）。</p>
+<hr>
+<h2 class="mume-header" id="lets-start">Let's Start</h2>
+
+<blockquote>
+<p>本文仅就如何通过EMIT优化反射进行展开，想学习代理类动态生成的同学请关注我以后的文章。</p>
+</blockquote>
+<h3 class="mume-header" id="%E7%9B%AE%E6%A0%87">目标</h3>
+
+<p>对于将一个对象进行拷贝，相信大家都不陌生，可以以下两种手段完成：</p>
 <ul>
-<li><a href="CSharp/HowToPreventCrossReference.html">如何防止交叉引用</a></li>
-<li><a href="CSharp/HotToStudyEMIT.html">如何入门EMIT</a></li>
+<li>正/反序列化
+<ul>
+<li>二进制</li>
+<li>Json</li>
+<li>Xml</li>
+<li>其它任何可能反映类型内部状态的序列化方式</li>
 </ul>
+</li>
+<li>反射所有Property / Field</li>
+</ul>
+<p>这两种方法的性能是：正/反序列化最慢，反射较快于序列化。<strong>因为序列化中也使用了或多或少的反射</strong>。</p>
 
       </div>
       <div class="md-sidebar-toc"><ul>
-<li><a href="#%E7%9B%AE%E5%BD%95">目录</a>
+<li><a href="#%E5%A6%82%E4%BD%95%E5%85%A5%E9%97%A8emit">如何入门EMIT</a>
 <ul>
-<li><a href="#c%E7%B1%BB%E6%96%87%E7%AB%A0">C#类文章</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">基本概念</a>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AFil">什么是IL</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%B0%84">什么是反射</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AFemit">什么是EMIT</a></li>
+</ul>
+</li>
+<li><a href="#lets-start">Let's Start</a>
+<ul>
+<li><a href="#%E7%9B%AE%E6%A0%87">目标</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
