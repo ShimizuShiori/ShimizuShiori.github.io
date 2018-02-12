@@ -46,4 +46,20 @@ C#编译器并不会直接将我们的Code编译成机器级语言，而是编�
     * 其它任何可能反映类型内部状态的序列化方式
 * 反射所有Property / Field
 
-这两种方法的性能是：正/反序列化最慢，反射较快于序列化。**因为序列化中也使用了或多或少的反射**。
+#### 反射
+
+反射的代码大致如下：
+
+```csharp
+public void Copy<T>(T target)
+    where T: new
+{
+    T result = new T();
+    foreach(var property in typeof(T).GetProperties())
+    {
+        var targetValue = property.GetValue(target, null);
+        result.SetValue(target, null);
+    }
+    return result;
+}
+```
