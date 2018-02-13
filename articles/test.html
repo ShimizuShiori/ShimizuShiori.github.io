@@ -6,14 +6,30 @@
 </head>
 
 <body>
-
+    <input type="button" value="ByJquery" onclick="byJquery" />
+    <input type="button" value="ByReqwest" onclick="ByReqwest" />
 </body>
 <script type="text/javascript">
-    require(["jquery"], function ($) {
-        $.get("index.md",function(rlt){
-            alert(rlt);
-        },"text");
-    });
+    function byJquery() {
+        require(["jquery"], function ($) {
+            $.get("index.md", function (rlt) {
+                alert(rlt);
+            }, "text");
+        });
+    }
+
+    function ByReqwest() {
+        require(["reqwest"], function (req) {
+            req({
+                url: "index.md",
+                method: "get",
+                type: "text",
+                success: function (rlt) {
+                    alert(rlt);
+                }
+            });
+        });
+    }
 </script>
 
 </html>
