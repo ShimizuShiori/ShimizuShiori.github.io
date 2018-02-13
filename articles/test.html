@@ -13,7 +13,7 @@
     function byJquery() {
         require(["jquery"], function ($) {
             $.get("index.md", function (rlt) {
-                alert(rlt);
+                toHTML(rlt);
             }, "text");
         });
     }
@@ -22,9 +22,16 @@
         require(["reqwest"], function (req) {
             req({
                 url: "index.md"
-            }).then(function(res){
-                alert(res);
+            }).then(function (res) {
+                toHTML(res);
             });
+        });
+    }
+
+    function toHTML(md) {
+        require(["markdown"], function (markdown) {
+            var html = markdown.toHTML(md);
+            alert(html);
         });
     }
 </script>
