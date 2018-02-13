@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>编辑器</title>
+    <script src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
+    <script src="/scripts/require.main.js"></script>
+</head>
+
+<body>
+    <input type="button" value="ByJquery" onclick="byJquery()" />
+    <input type="button" value="ByReqwest" onclick="ByReqwest()" />
+</body>
+<script type="text/javascript">
+    function byJquery() {
+        require(["jquery"], function ($) {
+            $.get("index.md", function (rlt) {
+                toHTML(rlt);
+            }, "text");
+        });
+    }
+
+    function ByReqwest() {
+        require(["reqwest"], function (req) {
+            req({
+                url: "index.md"
+            }).then(function (res) {
+                toHTML(res);
+            });
+        });
+    }
+
+    function toHTML(md) {
+        require(["markdown"], function (markdown) {
+            var html = markdown.toHTML(md);
+            alert(html);
+        });
+    }
+</script>
+
+</html>
