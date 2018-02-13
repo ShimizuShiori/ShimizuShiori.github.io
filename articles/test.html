@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <script src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
+    <script src="/scripts/require.main.js"></script>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    require(["reqwest"], function (reqwest) {
+        reqwest({
+            url: '/articles',
+            method: 'get',
+            success: function (resp) {
+                alert(resp);
+            }
+        })
+    });
+</script>
+
+</html>
