@@ -6,8 +6,8 @@
 </head>
 
 <body>
-    <input type="button" value="ByJquery" onclick="byJquery" />
-    <input type="button" value="ByReqwest" onclick="ByReqwest" />
+    <input type="button" value="ByJquery" onclick="byJquery()" />
+    <input type="button" value="ByReqwest" onclick="ByReqwest()" />
 </body>
 <script type="text/javascript">
     function byJquery() {
@@ -21,12 +21,9 @@
     function ByReqwest() {
         require(["reqwest"], function (req) {
             req({
-                url: "index.md",
-                method: "get",
-                type: "text",
-                success: function (rlt) {
-                    alert(rlt);
-                }
+                url: "index.md"
+            }).then(function(res){
+                alert(res);
             });
         });
     }
