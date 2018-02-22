@@ -10,3 +10,8 @@
 4. 将 **Commit** 后的 *Copied Repo 1* **push** 到 *Main Repo* 中
 5. 使用 **pull** 将 *Copied Repo 1* 中的修改同步到 *Copied Repo 2* 中
 
+```
+git init --bare
+Initialized empty Git repository in D:/Git/MainRepo
+
+```
