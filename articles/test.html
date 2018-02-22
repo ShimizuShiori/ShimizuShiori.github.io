@@ -3,13 +3,16 @@
 <head>
     <script src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
     <script src="/scripts/require.main.js"></script>
+    <script src="https://cdn.bootcss.com/markdown.js/0.6.0-beta1/markdown.min.js"></script>
 </head>
 
 <body>
     <input type="button" value="ByJquery" onclick="byJquery()" />
     <input type="button" value="ByReqwest" onclick="ByReqwest()" />
+    <div id="rlt"></div>
 </body>
 <script type="text/javascript">
+
     function byJquery() {
         require(["jquery"], function ($) {
             $.get("index.md", function (rlt) {
@@ -29,9 +32,21 @@
     }
 
     function toHTML(md) {
-        require(["markdown"], function (markdown) {
-            var html = markdown.toHTML(md);
-            alert(html);
+        require(["marked"], function (marked) {
+            marked.setOptions({
+                renderer: new marked.Renderer(),
+                gfm: true,
+                tables: true,
+                breaks: false,
+                pedantic: false,
+                sanitize: false,
+                smartLists: true,
+                smartypants: false,
+                xhtml: true
+            });
+
+            //alert(marked(md));
+            document.getElementById("rlt").innerHTML = marked(md);
         });
     }
 </script>
