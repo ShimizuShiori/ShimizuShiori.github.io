@@ -2,7 +2,7 @@
 
 ## 目标
 
-Boostrap中的**table**样式会使表在非移动中以100%宽度显示
+Boostrap中的**table**样式会使表在非移动中以100%宽度显示:
 
 ```css
 .table{
