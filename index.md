@@ -1,4 +1,4 @@
-# 目录
+# ShimizuShiori的Github首页
 
 ## C#笔记
 
@@ -8,3 +8,7 @@
 ## Javascript笔记
 
 * [Async callback via JQuery.Deferred](Javascript/JQueryPromise.html)
+
+---
+
+* [常用链接](mylinks.html)
