@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <title>index</title>
+      <title>JQueryPromise</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -213,28 +213,35 @@ code.language-yaml {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview   ">
-      <h1 class="mume-header" id="%E7%9B%AE%E5%BD%95">目录</h1>
+      <h1 class="mume-header" id="async-callback-via-jquerydeferred">Async callback via JQuery.Deferred</h1>
 
-<h2 class="mume-header" id="c%E7%AC%94%E8%AE%B0">C#笔记</h2>
-
-<ul>
-<li><a href="CSharp/HowToPreventCrossReference.html">如何防止交叉引用</a></li>
-<li><a href="CSharp/HotToStudyEMIT.html">如何入门EMIT(未完成)</a></li>
-</ul>
-<h2 class="mume-header" id="javascript%E7%AC%94%E8%AE%B0">Javascript笔记</h2>
-
-<ul>
-<li><a href="Javascript/JQueryPromise.html">Async callback via JQuery.Deferred</a></li>
-</ul>
+<style type="text/css">
+iframe{
+    width:100%;
+    border-width:0px;
+}
+</style>
+<pre class="language-javascript"><span class="token keyword">function</span> <span class="token function">getData</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> dtd <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Deferred</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>id <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        dtd<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">"ID less than 1!"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"getData"</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            dtd<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`HelloWorld ! </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> dtd<span class="token punctuation">.</span><span class="token function">promise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+<iframe src="JQueryPromiseDoneFail.html">
+</iframe>
+<hr>
+<p><a href="../index.html">返回首页</a></p>
 
       </div>
       <div class="md-sidebar-toc"><ul>
-<li><a href="#%E7%9B%AE%E5%BD%95">目录</a>
-<ul>
-<li><a href="#c%E7%AC%94%E8%AE%B0">C#笔记</a></li>
-<li><a href="#javascript%E7%AC%94%E8%AE%B0">Javascript笔记</a></li>
-</ul>
-</li>
+<li><a href="#async-callback-via-jquerydeferred">Async callback via JQuery.Deferred</a></li>
 </ul>
 </div>
       <a id="sidebar-toc-btn">≡</a>

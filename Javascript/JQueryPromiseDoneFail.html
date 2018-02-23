@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function getData(id) {
+            var dtd = $.Deferred();
+            if (id <= 0) {
+                dtd.reject("ID less than 1!")
+            } else {
+                setTimeout(() => {
+                    console.log("getData", id);
+                    dtd.resolve(`HelloWorld ! ${id}`);
+                }, 2000);
+            }
+            return dtd.promise();
+        }
+
+        function onGetData() {
+            var id = document.getElementById("txt-id").value;
+            getData(id)
+                .done(d => alert(d))
+                .fail(msg => alert("fail :" + msg));
+        }
+    </script>
+</head>
+
+<body>
+    <span>getData(</span>
+    <input style="width:30px;border-left-width:0px;border-right-width:0px;border-top-width:0px;text-align:right" type="text" value="" id="txt-id" />
+    <span>)</span>
+    <input type="button" value="Call" onclick="onGetData()" />
+</body>
+
+</html>
