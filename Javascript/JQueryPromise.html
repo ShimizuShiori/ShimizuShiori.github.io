@@ -5,7 +5,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
       
       
       
@@ -221,7 +221,7 @@ iframe{
     border-width:0px;
 }
 </style>
-<pre class="language-javascript"><span class="token keyword">function</span> <span class="token function">getData</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript"><span class="token keyword">function</span> <span class="token function">getData</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> dtd <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Deferred</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>id <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         dtd<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">"ID less than 1!"</span><span class="token punctuation">)</span>
@@ -233,8 +233,15 @@ iframe{
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> dtd<span class="token punctuation">.</span><span class="token function">promise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre>
-<iframe src="JQueryPromiseDoneFail.html">
+
+<span class="token comment" spellcheck="true">//when call is clicked</span>
+<span class="token keyword">function</span> <span class="token function">onGetData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> id <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"txt-id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+    <span class="token function">getData</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span>d <span class="token operator">=></span> <span class="token function">alert</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">fail</span><span class="token punctuation">(</span>msg <span class="token operator">=></span> <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"fail :"</span> <span class="token operator">+</span> msg<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><iframe src="JQueryPromiseDoneFail.html">
 </iframe>
 <hr>
 <p><a href="../index.html">返回首页</a></p>
