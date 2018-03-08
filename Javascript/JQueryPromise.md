@@ -21,7 +21,7 @@ function getData(id) {
     return dtd.promise();
 }
 
-//when call is clicked
+//when "call" is clicked
 function onGetData() {
     var id = document.getElementById("txt-id").value;
     getData(id)
