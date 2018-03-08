@@ -20,6 +20,14 @@ function getData(id) {
     }
     return dtd.promise();
 }
+
+//when call is clicked
+function onGetData() {
+    var id = document.getElementById("txt-id").value;
+    getData(id)
+        .done(d => alert(d))
+        .fail(msg => alert("fail :" + msg));
+}
 ```
 <iframe src="JQueryPromiseDoneFail.html">
 </iframe>
