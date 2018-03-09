@@ -8,6 +8,7 @@
 ## Javascript笔记
 
 * [Async callback via JQuery.Deferred](Javascript/JQueryPromise.html)
+* [在JavaScript开发中使用精确智能提示](Javascript/UserIntelliSenseInJavaScript.html)
 
 ---
 
