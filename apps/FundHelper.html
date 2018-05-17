@@ -54,7 +54,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">出手续费</span>
-                    <p class="form-control">{{ result.inFee | money }}</p>
+                    <p class="form-control">{{ result.outFee | money }}</p>
                     <span class="input-group-addon">元</span>
                 </div>
             </div>
@@ -74,8 +74,8 @@
             el: "#app",
             data: {
                 money: 10000,
-                days: 10,
-                yearRate: 1.06,
+                days: 365,
+                yearRate: 2.00,
                 showResult: false,
                 result: {
                     inFeeRate: 0.0015,
@@ -101,7 +101,7 @@
                     result.inFee = this.money - this.money / (1 + result.inFeeRate);
                     result.realOutMoney = Math.pow(Math.pow(this.yearRate, 1 / 365), this.days) *
                         this.money / (1 - this.outFeeRate);
-                    result.outFee = resizeBy.realOutMoney * this.outFeeRate;
+                    result.outFee = result.realOutMoney * this.outFeeRate;
                     this.showResult = true;
                 }
             },
