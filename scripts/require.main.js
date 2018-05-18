@@ -6,17 +6,21 @@ require.config({
         bootstrap: "https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min",
         markdown:
             "https://cdn.bootcss.com/markdown.js/0.6.0-beta1/markdown.min",
-        vue: "https://cdn.bootcss.com/vue/2.5.13/vue.min"
+        vue: "https://cdn.bootcss.com/vue/2.5.13/vue.min",
+        "vue-router": "https://cdn.bootcss.com/vue-router/3.0.1/vue-router"
     },
     shim: {
         vue: {
             exports: "Vue"
         },
-        bootstrap:{
-            deps:[
+        bootstrap: {
+            deps: [
                 "css!https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min",
                 "jquery"
             ]
+        },
+        "vue-router": {
+            exports: "VueRouter"
         }
     },
     map: {

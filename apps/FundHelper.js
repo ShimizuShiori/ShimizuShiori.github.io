@@ -1,0 +1,124 @@
+define(function() {
+    return {
+        template: `
+        <div>
+        <h1 class="text-center">基金助手计算器</h1>
+        <hr />
+        <div class="container" id="app">
+            <form>
+                <div class="form-group">
+                    <label>本金</label>
+                    <div class="input-group">
+                        <input class="form-control" type="number" v-model.number="money" />
+                        <span class="input-group-addon">元</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>天数</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" v-model.number="days" />
+                        <span class="input-group-addon">天</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>期望年化利</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" step="0.01" v-model.number="yearRate" />
+                        <span class="input-group-addon">%</span>
+                    </div>
+                </div>
+                <hr />
+                <input type="button" class="btn btn-primary" value="计算结果" v-on:click="calc" />
+            </form>
+            <hr />
+            <div v-if="showResult">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">入手续费（率）</span>
+                        <p class="form-control">{{ result.inFeeRate | rate }}</p>
+                        <span class="input-group-addon">%</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">入手续费</span>
+                        <p class="form-control">{{ result.inFee | money }}</p>
+                        <span class="input-group-addon">元</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">收手续费（率）</span>
+                        <p class="form-control">{{ result.outFeeRate | rate }}</p>
+                        <span class="input-group-addon">%</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">出手续费</span>
+                        <p class="form-control">{{ result.outFee | money }}</p>
+                        <span class="input-group-addon">元</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">最终卖价</span>
+                        <p class="form-control">{{ result.realOutMoney | money }}</p>
+                        <span class="input-group-addon">元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>`,
+        data: function() {
+            return {
+                money: 10000,
+                days: 365,
+                yearRate: 100,
+                showResult: false,
+                result: {
+                    inFeeRate: 0.0015,
+                    outFeeRate: 0,
+                    inFee: 0,
+                    outFee: 0,
+                    realOutMoney: 0
+                }
+            };
+        },
+        filters: {
+            money: function(value) {
+                return value.toFixed(2);
+            },
+            rate: function(value) {
+                value = value * 100;
+                return value.toFixed(2);
+            }
+        },
+        methods: {
+            calc: function() {
+                var result = this.result;
+                result.outFeeRate = this.outFeeRate;
+                result.inFee = this.money - this.money / (1 + result.inFeeRate);
+                result.realOutMoney =
+                    Math.pow(
+                        Math.pow(this.yearRate / 100 + 1, 1 / 365),
+                        this.days
+                    ) *
+                    this.money /
+                    (1 - this.outFeeRate);
+                result.outFee = result.realOutMoney * this.outFeeRate;
+                this.showResult = true;
+            }
+        },
+        computed: {
+            outFeeRate: function() {
+                var days = this.days;
+                if (days < 7) return 0.015;
+                if (days < 30) return 0.0075;
+                if (days < 365) return 0.005;
+                if (days < 720) return 0.0025;
+                return 0;
+            }
+        }
+    };
+});
