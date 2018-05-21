@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" href="../imgs/R.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>SPA</title>
+    <script src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
+    <script type="text/javascript" src="../scripts/require.main.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul class="list-group">
+            <li v-for="item in imgs">
+                <img v-bind:src="item.path" style="width:30px;height:30px;" v-on:click="show(item)" />
+            </li>
+        </ul>
+        <hr />
+        <img v-if="showBigImg" v-bind:src="selectedImg.path" />
+    </div>
+    <script type="text/javascript">
+        var count = 7;
+        require(["vue"], function (Vue) {
+            new Vue({
+                el: "#app",
+                data: {
+                    imgs: (function () {
+                        var rlt = [];
+                        for (var
+                                i = 0; i <
+                            count; i++) {
+                            rlt.push({
+                                path: i.toString() + ".gif"
+                            });
+                        }
+                        return rlt;
+                    })(),
+                    selectedImg: null
+                },
+                computed: {
+                    showBigImg: function () {
+                        debugger;
+                        return this.selectedImg != null;
+                    }
+                },
+                methods:{
+                    show:function(item){
+                        this.selectedImg = item;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
