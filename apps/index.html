@@ -29,7 +29,7 @@
     </div>
 
     <script type="text/javascript">
-        require(["vue", "vue-router", "bootstrap"], function (Vue, VueRouter) {
+        require(["vue", "vue-router", "bootstrap", "jquery"], function (Vue, VueRouter, $) {
             Vue.use(VueRouter);
             startRoute(Vue, VueRouter);
         });
@@ -71,10 +71,7 @@
             const app = new Vue({
                 router: router,
                 data: {
-                    apps: [{
-                        title: "基金助手",
-                        path: "FundHelper"
-                    }]
+                    apps: []
                 },
                 methods: {
                     gotoApp: function (app) {
@@ -90,6 +87,10 @@
                     }
                 }
             }).$mount('#app');
+
+            $.get("./list.json", function (rlt) {
+                app.apps = rlt;
+            }, "json");
         }
     </script>
 </body>
