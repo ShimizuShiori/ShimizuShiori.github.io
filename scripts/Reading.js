@@ -56,8 +56,17 @@ define([], function () {
                 }
             },
             init: function () {
-                if (this.loadBooks() === null)
-                    this.saveBooks([]);
+                if (this.loadBooks() === null) {
+                    var initBookNames = ['绘本', '牛津树', '培生幼儿', '我的第一套图书馆', '海尼曼', 'Raz', '牛津自然拼读', '牛津字典', '鹅妈妈', '米菲', '用美国幼儿园课本学英语', 'peppa pig', '鹅妈妈'];
+                    var index = 1;
+                    var books = initBookNames.map(x => {
+                        return {
+                            id: index++,
+                            name: x
+                        }
+                    });
+                    this.saveBooks(books);
+                }
             },
             getBook: function (id) {
                 var books = this.loadBooks();

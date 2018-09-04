@@ -55,13 +55,6 @@ define(["jquery", "Reading"], function ($, reading) {
                             path: "/books"
                         });
                     }
-                },
-                created: function () {
-                    if (this.books.length === 0)
-                        alert("没有书籍信息，先请维护书籍信息");
-                    this.$router.push({
-                        path: "/books"
-                    });
                 }
             }
         };
