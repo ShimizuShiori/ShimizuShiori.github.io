@@ -24,6 +24,11 @@ define(["jquery", "Reading", "vue-router"], function ($, reading, VueRouter) {
                         this.$router.push({
                             path: 'book/' + book.id
                         });
+                    },
+                    goRecords: function () {
+                        this.$router.push({
+                            path: "/"
+                        });
                     }
                 }
             }

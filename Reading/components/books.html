@@ -1,5 +1,13 @@
 <div>
-    <a class="btn btn-block btn-info" v-on:click="CreateClick">新建书籍</a>
+    <div class="row">
+        <div class="col-xs-6">
+            <a class="btn btn-block btn-info" v-on:click="CreateClick">新建书籍</a>
+        </div>
+        <div class="col-xs-6">
+            <a class="btn btn-block btn-primary" v-on:click="goRecords">填写记录</a>
+        </div>
+    </div>
+
     <hr />
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered table-condensed">

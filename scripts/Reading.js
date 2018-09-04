@@ -8,6 +8,10 @@ define([], function () {
         return JSON.parse(window.localStorage.getItem(key));
     }
 
+    function has(key) {
+        window.localStorage.getItem(key) !== null;
+    }
+
 
     return {
         book: {
@@ -58,6 +62,26 @@ define([], function () {
             getBook: function (id) {
                 var books = this.loadBooks();
                 return books.filter(x => x.id === id)[0];
+            }
+        },
+        records: {
+            save: function (records) {
+                if (!has("records_" + records.date)) {
+                    var array = load("record_dates");
+                    if (array === null) array = [];
+                    array.push(records.date);
+                    save("record_dates", array);
+                }
+                save("records_" + records.date, records);
+            },
+            load: function (date) {
+                var rlt = load("records_" + date);
+                if (rlt === null)
+                    rlt = {
+                        date: date,
+                        records: []
+                    };
+                return rlt;
             }
         }
     }

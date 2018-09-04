@@ -1,0 +1,39 @@
+<div>
+    <h1 class="text-center">登记</h1>
+    <hr />
+    <form>
+        <div class="form-group">
+            <label>日期</label>
+            <input type="date" class="form-control" v-model="date" />
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>书籍名称</th>
+                    <th>数量</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in records">
+                    <td>
+                        <select class="form-control" v-model="item.bookId">
+                            <option v-for="book in books" v-bind:value="book.id">{{ book.name }}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" v-model.number="item.count" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <a class="btn btn-info btn-block" v-on:click="addRow">添加一条记录</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr />
+    </form>
+    <hr />
+    <a class="btn btn-primary btn-block" v-on:click="save()">保存</a>
+    <a class="btn btn-default btn-block" v-on:click="books()">书籍管理</a>
+</div>
