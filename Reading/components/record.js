@@ -18,13 +18,24 @@ define(["jquery", "Reading"], function ($, reading) {
                     result.records = records.load(result.date).records;
                     if (result.records.length === 0 && books.length > 0)
                         result.records.push({
-                            bookId: books[0].id,
-                            count: 1
+                            bookId: "",
+                            count: 0
                         });
 
                     return result;
                 },
                 template: "",
+                watch: {
+                    date: function (now, old) {
+                        var _records = records.load(now).records;
+                        if (_records.length === 0 && this.books.length > 0)
+                            _records.push({
+                                bookId: "",
+                                count: 0
+                            });
+                        this.records = _records;
+                    }
+                },
                 methods: {
                     addRow: function () {
                         this.records.push({
