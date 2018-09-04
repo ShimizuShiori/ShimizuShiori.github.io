@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <title>SAP</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
+    <script type="text/javascript" src="../scripts/require.main.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="app">
+            <h1>Hello App!</h1>
+            <p>
+                <router-link to="/foo">Go to Foo</router-link>
+                <router-link to="/bar">Go to Bar</router-link>
+                <router-link to="/books">Go to books</router-link>
+            </p>
+            <!-- 路由出口 -->
+            <!-- 路由匹配到的组件将渲染在这里 -->
+            <router-view></router-view>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    require(["bootstrap", "vue-router", "vue", "jquery"], function (bt, VueRouter, Vue, $) {
+
+        Vue.use(VueRouter)
+
+        var components = [
+            "foo",
+            "bar",
+            "books",
+            "book"
+        ];
+
+        var routes = [],
+            router;
+
+        function initComponents() {
+            if (components.length === 0) {
+                router = new VueRouter({
+                    routes
+                });
+                const app = new Vue({
+                    router
+                }).$mount('#app');
+            } else {
+                var componentName = components.shift();
+
+                require(["../Reading/components/" + componentName], function (c) {
+                    if (typeof c === "function") {
+                        //延迟构建的组件
+                        c(r => {
+                            console.log(r);
+                            routes.push(r)
+                            initComponents();
+                        });
+                    } else {
+                        console.log(c);
+                        routes.push(c);
+                        initComponents();
+                    }
+                });
+            }
+        }
+        initComponents();
+    });
+</script>
+
+</html>

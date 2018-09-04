@@ -1,0 +1,12 @@
+<div>
+    <h1>{{ title }}</h1>
+    <hr />
+    <form>
+        <div class="form-group">
+            <label>书籍名称</label>
+            <input type="text" class="form-control" v-model="book.name" placeholder="请填写书籍名称" />
+        </div>
+    </form>
+    <hr />
+    <a class="btn btn-primary" v-on:click="saveBook">保存</a>
+</div>

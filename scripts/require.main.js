@@ -1,13 +1,13 @@
 require.config({
+    baseUrl: "/scripts",
     paths: {
         reqwest: "https://cdn.bootcss.com/reqwest/2.0.5/reqwest.min",
         jquery: "https://cdn.bootcss.com/jquery/3.3.1/jquery.min",
         marked: "https://cdn.bootcss.com/marked/0.3.12/marked.min",
         bootstrap: "https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min",
-        markdown:
-            "https://cdn.bootcss.com/markdown.js/0.6.0-beta1/markdown.min",
+        markdown: "https://cdn.bootcss.com/markdown.js/0.6.0-beta1/markdown.min",
         vue: "https://cdn.bootcss.com/vue/2.5.13/vue.min",
-        "vue-router": "https://cdn.bootcss.com/vue-router/3.0.1/vue-router"
+        "vue-router": "https://cdn.bootcss.com/vue-router/3.0.1/vue-router",
     },
     shim: {
         vue: {
@@ -25,7 +25,7 @@ require.config({
     },
     map: {
         "*": {
-            css: "/scripts/css.min.js"
+            css: "./css.min"
         }
     }
 });
