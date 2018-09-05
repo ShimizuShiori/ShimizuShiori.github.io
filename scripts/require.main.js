@@ -8,6 +8,7 @@ require.config({
         markdown: "https://cdn.bootcss.com/markdown.js/0.6.0-beta1/markdown.min",
         vue: "https://cdn.bootcss.com/vue/2.5.13/vue.min",
         "vue-router": "https://cdn.bootcss.com/vue-router/3.0.1/vue-router",
+        "bootstrap-datetimepicker": "./bootstrap-datetimepicker.min"
     },
     shim: {
         vue: {
@@ -17,6 +18,11 @@ require.config({
             deps: [
                 "css!https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min",
                 "jquery"
+            ]
+        },
+        "bootstrap-datetimepicker": {
+            deps: [
+                "css!../styles/bootstrap-datetimepicker.min"
             ]
         },
         "vue-router": {
