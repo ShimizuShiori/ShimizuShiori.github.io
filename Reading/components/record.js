@@ -61,7 +61,7 @@ define(["jquery", "Reading"], function ($, reading) {
                         alert("保存成功");
                         this.records = sumReocrds;
                     },
-                    books: function () {
+                    gotoBooks: function () {
                         this.$router.push({
                             path: "/books"
                         });
