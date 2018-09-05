@@ -1,7 +1,9 @@
-define(["jquery", "Reading"], function ($, reading) {
+define(["jquery", "Reading", "sync"], function ($, reading) {
 
     var book = reading.book;
     var records = reading.records;
+
+    book.init();
 
     return function (callback) {
         var obj = {
@@ -65,6 +67,9 @@ define(["jquery", "Reading"], function ($, reading) {
                         this.$router.push({
                             path: "/books"
                         });
+                    },
+                    remove: function (index) {
+                        this.records.splice(index, 1);
                     }
                 }
             }

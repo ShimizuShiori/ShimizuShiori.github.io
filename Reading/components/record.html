@@ -11,10 +11,11 @@
                 <tr>
                     <th>书籍名称</th>
                     <th>数量</th>
+                    <td>操作</td>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in records">
+                <tr v-for="item,index in records">
                     <td>
                         <select class="form-control" v-model="item.bookId">
                             <option v-for="book in books" v-bind:value="book.id">{{ book.name }}</option>
@@ -23,9 +24,12 @@
                     <td>
                         <input type="number" class="form-control" v-model.number="item.count" />
                     </td>
+                    <td>
+                        <a class="btn btn-danger" v-on:click="remove(index)">移除</a>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         <a class="btn btn-info btn-block" v-on:click="addRow">添加一条记录</a>
                     </td>
                 </tr>

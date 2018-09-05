@@ -2,8 +2,6 @@ define(["jquery", "Reading", "vue-router"], function ($, reading, VueRouter) {
 
     var book = reading.book;
 
-    book.init();
-
     return function (callback) {
         var obj = {
             path: "/books",

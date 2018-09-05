@@ -1,15 +1,15 @@
-define([], function () {
+define(["cache"], function (cache) {
 
     function save(key, data) {
-        window.localStorage.setItem(key, JSON.stringify(data));
+        cache.save(key,data);
     }
 
     function load(key) {
-        return JSON.parse(window.localStorage.getItem(key));
+        return cache.load(key);
     }
 
     function has(key) {
-        window.localStorage.getItem(key) !== null;
+        return cache.has(key);
     }
 
 
@@ -23,7 +23,6 @@ define([], function () {
             },
             addBook: function (book) {
                 var books = this.loadBooks();
-                debugger;
                 books.push(book)
                 this.saveBooks(books);
             },
