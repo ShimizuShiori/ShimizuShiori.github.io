@@ -1,4 +1,6 @@
-define(["jquery", "Reading", "sync"], function ($, reading) {
+define(["jquery", "Reading", "sync", "ELEMENT", "vue"], function ($, reading, sync, ELEMENT, Vue) {
+
+    Vue.use(ELEMENT.DatePicker);
 
     var book = reading.book;
     var records = reading.records;
@@ -27,9 +29,14 @@ define(["jquery", "Reading", "sync"], function ($, reading) {
                     return result;
                 },
                 template: "",
+                computed: {
+                    dateStr: function () {
+                        return this.date.toJSON().substr(0, 10);
+                    }
+                },
                 watch: {
                     date: function (now, old) {
-                        var _records = records.load(now).records;
+                        var _records = records.load(this.dateStr).records;
                         if (_records.length === 0 && this.books.length > 0)
                             _records.push({
                                 bookId: "",
@@ -57,7 +64,7 @@ define(["jquery", "Reading", "sync"], function ($, reading) {
                             }
                         }
                         records.save({
-                            date: this.date,
+                            date: this.dateStr,
                             records: sumReocrds
                         });
                         alert("保存成功");

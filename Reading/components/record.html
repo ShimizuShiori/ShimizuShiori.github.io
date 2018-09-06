@@ -4,7 +4,13 @@
     <form>
         <div class="form-group">
             <label>日期</label>
-            <input type="date" class="form-control" v-model="date" />
+            <!--<input type="date" class="form-control" v-model="date" />-->
+            <el-date-picker
+                v-model="date"
+                type="date"
+                :editable="false"
+                placeholder="选择日期">
+            </el-date-picker>
         </div>
         <table class="table">
             <thead>
