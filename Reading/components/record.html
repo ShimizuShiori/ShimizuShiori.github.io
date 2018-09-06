@@ -1,16 +1,13 @@
 <div>
+    <mt-datetime-picker ref="picker" v-model="date" type="date" year-format="{value} 年" month-format="{value} 月"
+        date-format="{value} 日">
+    </mt-datetime-picker>
     <h1 class="text-center">登记</h1>
     <hr />
     <form>
         <div class="form-group">
             <label>日期</label>
-            <!--<input type="date" class="form-control" v-model="date" />-->
-            <el-date-picker
-                v-model="date"
-                type="date"
-                :editable="false"
-                placeholder="选择日期">
-            </el-date-picker>
+            <input type="text" class="form-control" readonly v-bind:value="dateStr" v-on:click="showPicker" />
         </div>
         <table class="table">
             <thead>

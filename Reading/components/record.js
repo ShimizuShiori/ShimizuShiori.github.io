@@ -1,6 +1,6 @@
-define(["jquery", "Reading", "sync", "ELEMENT", "vue"], function ($, reading, sync, ELEMENT, Vue) {
+define(["jquery", "Reading", "sync", "MINT", "vue", "dateformat"], function ($, reading, sync, MINT, Vue) {
 
-    Vue.use(ELEMENT.DatePicker);
+    Vue.component(MINT.DatetimePicker.name, MINT.DatetimePicker);
 
     var book = reading.book;
     var records = reading.records;
@@ -31,7 +31,8 @@ define(["jquery", "Reading", "sync", "ELEMENT", "vue"], function ($, reading, sy
                 template: "",
                 computed: {
                     dateStr: function () {
-                        return this.date.toJSON().substr(0, 10);
+                        if (typeof this.date === "string") return this.date;
+                        return $.format.date(this.date, "yyyy-MM-dd");
                     }
                 },
                 watch: {
@@ -77,6 +78,9 @@ define(["jquery", "Reading", "sync", "ELEMENT", "vue"], function ($, reading, sy
                     },
                     remove: function (index) {
                         this.records.splice(index, 1);
+                    },
+                    showPicker: function () {
+                        this.$refs.picker.open();
                     }
                 }
             }

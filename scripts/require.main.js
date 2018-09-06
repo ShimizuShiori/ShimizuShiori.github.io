@@ -10,7 +10,8 @@ require.config({
         "vue-router": "https://cdn.bootcss.com/vue-router/3.0.1/vue-router",
         "bootstrap-datetimepicker": "./bootstrap-datetimepicker.min",
         ELEMENT: "https://unpkg.com/element-ui/lib/index",
-        MINT: "https://unpkg.com/mint-ui@2.2.13/lib/index"
+        MINT: "https://unpkg.com/mint-ui@2.2.13/lib/index",
+        dateformat: "https://cdn.bootcss.com/jquery-dateFormat/1.0/jquery.dateFormat.min"
     },
     shim: {
         vue: {
@@ -40,6 +41,11 @@ require.config({
         MINT: {
             deps: [
                 "css!https://unpkg.com/mint-ui/lib/style"
+            ]
+        },
+        dateformat: {
+            deps: [
+                "jquery"
             ]
         }
     },
