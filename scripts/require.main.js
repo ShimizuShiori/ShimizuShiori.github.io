@@ -9,7 +9,8 @@ require.config({
         vue: "https://cdn.bootcss.com/vue/2.5.13/vue.min",
         "vue-router": "https://cdn.bootcss.com/vue-router/3.0.1/vue-router",
         "bootstrap-datetimepicker": "./bootstrap-datetimepicker.min",
-        ELEMENT: "https://unpkg.com/element-ui/lib/index"
+        ELEMENT: "https://unpkg.com/element-ui/lib/index",
+        MINT: "https://unpkg.com/mint-ui@2.2.13/lib/index"
     },
     shim: {
         vue: {
@@ -35,6 +36,11 @@ require.config({
                 "vue"
             ],
             exports: "ELEMENT"
+        },
+        MINT: {
+            deps: [
+                "css!https://unpkg.com/mint-ui/lib/style"
+            ]
         }
     },
     map: {
