@@ -8,7 +8,8 @@ require.config({
         markdown: "https://cdn.bootcss.com/markdown.js/0.6.0-beta1/markdown.min",
         vue: "https://cdn.bootcss.com/vue/2.5.13/vue.min",
         "vue-router": "https://cdn.bootcss.com/vue-router/3.0.1/vue-router",
-        "bootstrap-datetimepicker": "./bootstrap-datetimepicker.min"
+        "bootstrap-datetimepicker": "./bootstrap-datetimepicker.min",
+        ELEMENT: "https://unpkg.com/element-ui/lib/index"
     },
     shim: {
         vue: {
@@ -27,6 +28,13 @@ require.config({
         },
         "vue-router": {
             exports: "VueRouter"
+        },
+        ELEMENT: {
+            deps: [
+                "css!https://unpkg.com/element-ui/lib/theme-chalk/index",
+                "vue"
+            ],
+            exports: "ELEMENT"
         }
     },
     map: {
